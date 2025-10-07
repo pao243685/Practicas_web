@@ -1,5 +1,5 @@
 <div id="content">
   <app-info-song [song]="actualSong"></app-info-song>
   <br>
-  <app-media-control (requestSong)= "changeSong($event)"></app-media-control>
+  <app-media-control (requestSong)= "changeSong($event)" (isPlaying)="togglePlay($event)"></app-media-control>
 </div>

@@ -1,4 +1,5 @@
-import { Component, output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-media-control',
@@ -9,8 +10,10 @@ import { Component, output } from '@angular/core';
 export class MediaControl {
 
   song: any;
-  isPlaying = output<boolean>();
-  requestSong = output<boolean>();
+   @Output() isPlaying = new EventEmitter<boolean>();
+  @Output() requestSong = new EventEmitter<boolean>();
+
+  playing: boolean = false;
 
   nextSong(){
     this.requestSong.emit(true);
@@ -21,7 +24,8 @@ export class MediaControl {
   }
 
   play(){
-    this.isPlaying.emit(true);
+    this.playing = !this.playing;
+    this.isPlaying.emit(this.playing);
   }
 
 }

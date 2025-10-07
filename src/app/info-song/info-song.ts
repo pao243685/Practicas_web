@@ -1,4 +1,4 @@
-import { Component, computed, Input, input } from '@angular/core';
+import { Component, computed, Input, input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-info-song',
@@ -6,7 +6,17 @@ import { Component, computed, Input, input } from '@angular/core';
   templateUrl: './info-song.html',
   styleUrl: './info-song.css'
 })
-export class InfoSong {
+export class InfoSong implements OnInit {
+  ngOnInit(): void {
+    console.log(this.song)
+    alert("las  eentradas del componenete infosong se han iniciado")
+  }
+
+
+  constructor(){
+    alert("el componenete infosong se han creado")
+    console.log(this.song)
+  }
 
   @Input({required: true})
   song: any;
