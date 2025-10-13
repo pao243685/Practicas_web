@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { InfoSong } from './info-song/info-song';
 import { MediaControl } from './media-control/media-control';
+import { provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     App,
     InfoSong,
     MediaControl
+
   ],
   imports: [
     BrowserModule,
@@ -18,7 +20,8 @@ import { MediaControl } from './media-control/media-control';
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideZonelessChangeDetection()
+    provideZonelessChangeDetection(),
+    provideHttpClient()
   ],
   bootstrap: [App]
 })
