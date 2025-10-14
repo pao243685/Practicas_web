@@ -1,143 +1,49 @@
-import { AfterContentInit, Component, OnInit, signal } from '@angular/core';
-import { Song } from './interfaces/song';
+import { Component, OnInit } from '@angular/core';
+import { SpotifyLoginService } from './services/spotify-api/spotify-login-service';
+import { SpotifyPlaylistService } from './services/spotify-api/spotify-playlist-service';
+import { Song, parseSpotifyPlaylist } from './interfaces/song';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  standalone: false,
-  styleUrl: './app.css'
+  styleUrls: ['./app.css'],
+  standalone: false
 })
-export class App implements OnInit, AfterContentInit{
-  ngAfterContentInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class App implements OnInit {
+  currentSong: Song = { name: '', artist: '', url_cover: '', url_media: '' };
+  playlist: Song[] = [];
+
+  constructor(
+    private spotifyLogin: SpotifyLoginService,
+    private spotifyPlaylist: SpotifyPlaylistService
+  ) {}
 
   ngOnInit(): void {
-    console.log("los inputs se han inicializado")
-  }
+  console.log('App initialized');
 
-  protected readonly title = signal('EXAMPLE_APP');
-
-  constructor(){
-    this.actualSong = this.getNextSongFromPlaylist();
-  }
-
-nextSongs: Song[] = [
-   {
-      name: "cancion por codigo",
-      artist: "cancion 1",
-      url_media: "https://picsum.photos/200",
-      url_cover: "/media/song.mp3"
-  },
-   {
-      name: "cancion por codigo 2",
-      artist: "cancion 2",
-      url_media: "https://picsum.photos/200",
-      url_cover: "/media/song_2.mp3"
-  },
-  {
-      name: "cancion por codigo 3",
-      artist: "cancion 3",
-      url_media: "https://picsum.photos/200",
-      url_cover: "/media/song_3.mp3"
-  },
-  {
-      name: "cancion por codigo 4",
-      artist: "artista medio de codigo",
-      url_media: "https://picsum.photos/200",
-      url_cover: ""
-  },
-]
-lastSongs: any[] = []
-actualSong: any | undefined = undefined;
-private audioElement!: HTMLAudioElement;
+  this.spotifyLogin.getToken().subscribe((data) => {
+    console.log('Token recibido:', data);
 
 
 
+    
+    const token = data.access_token;
 
-  ngAfterViewInit() {
-    this.audioElement = document.getElementById('media') as HTMLAudioElement;
-  }
+    this.spotifyPlaylist.getPlaylist(token).subscribe((playlistResponse) => {
+      console.log('Playlist recibida de Spotify:', playlistResponse);
 
-  /*
- changeSong(value: boolean){
-  if(value){
-    this.lastSongs.push(this.actualSong);
-    this.actualSong = this.nextSongs.pop();
-  }else{
-    this.nextSongs.push(this.actualSong);
-    this.actualSong = this.lastSongs.pop();
-  }
- 
- if (this.audioElement && this.actualSong?.song) {
-      this.audioElement.src = this.actualSong.song;
-      this.audioElement.play();
-    }
-  }
+      const songs = parseSpotifyPlaylist(playlistResponse);
+      console.log('Canciones parseadas:', songs);
 
-*/
+      this.currentSong = songs[0];
+      this.playlist = songs;
 
-
-
- changeSong(value: boolean){
-  if(this.actualSong !== undefined){
-    if(value){
-      if(this.nextSongs.length == 0)
-        return;
-
-      this.lastSongs.push(this.actualSong);
-    this.actualSong = this.nextSongs.pop();
-    }else{
-      if(this.lastSongs.length == 0)
-        return;
-    this.nextSongs.push(this.actualSong);
-    this.actualSong = this.lastSongs.pop();
-  }
-  //renderizacion
-  }else{
-    alert("la cancion no se ha podido cargar")
-  }
-
-  }
-
-getNextSongFromPlaylist(): Song{
-  let possible_song = this.nextSongs.pop()
-  if(possible_song !== undefined)
-    return possible_song
-  else{
-    return{
-      name: "cancion por codigo 3",
-      artist: "cancion 3",
-      url_media: "https://picsum.photos/200",
-      url_cover: "/media/song_3.mp3"
-    }
-  }
+      console.log('currentSong asignada:', this.currentSong);
+      console.log('playlist asignada:', this.playlist);
+    });
+  });
 }
 
 
-getLastSongFromPlaylist(): Song{
-  let possible_song = this.lastSongs.pop()
-  if(possible_song !== undefined)
-    return possible_song;
-  else{
-    return{
-      name: "cancion por codigo 3",
-      artist: "cancion 3",
-      url_media: "https://picsum.photos/200",
-      url_cover: "/media/song_3.mp3"
-    }
-}
-
-}
-
-  togglePlay(isPlaying: boolean) {
-    if (!this.audioElement) return;
-    if (isPlaying) {
-      this.audioElement.play();
-    } else {
-      this.audioElement.pause();
-    }
-  }
-  
 
 }

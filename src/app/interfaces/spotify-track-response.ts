@@ -2,7 +2,7 @@ export interface SpotifyTrackResponse {
 
     id: string,
     name: string,
-    artist: [
+    artists: [
         {
             id: string,
             href: string,
@@ -11,4 +11,5 @@ export interface SpotifyTrackResponse {
     ],
     duration_ms: number,
     track_number: number,
+    preview_url: string,
 }

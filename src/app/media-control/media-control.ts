@@ -1,31 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { Song } from '../interfaces/song';
 
 @Component({
   selector: 'app-media-control',
-  standalone: false,
   templateUrl: './media-control.html',
-  styleUrl: './media-control.css'
+  styleUrls: ['./media-control.css'],
+  standalone: false
 })
 export class MediaControl {
-
-  song: any;
-   @Output() isPlaying = new EventEmitter<boolean>();
-  @Output() requestSong = new EventEmitter<boolean>();
-
-  playing: boolean = false;
-
-  nextSong(){
-    this.requestSong.emit(true);
-  }
-
-  lastSong(){
-    this.requestSong.emit(false);
-  }
-
-  play(){
-    this.playing = !this.playing;
-    this.isPlaying.emit(this.playing);
-  }
-
+  @Input() currentSong!: Song;
 }

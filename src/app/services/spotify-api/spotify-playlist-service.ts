@@ -14,9 +14,9 @@ export class SpotifyPlaylistService {
   }
 
   getPlaylist(token: string): Observable<SpotifyPlaylistResponse> {
-    return this._http.get<SpotifyPlaylistResponse>(`https://api.spotify.com/v1/playlists/${token}`, {
+    return this._http.get<SpotifyPlaylistResponse>('https://api.spotify.com/v1/playlists/3cEYpjA9oz9GiPac4AsH4n', {
       headers: {
-        Authorization: `Bearer ${token}`
+        Authorization: 'Bearer ' + this._cookieStorageService.getCookieValue('access_token')
       }
     });
   }

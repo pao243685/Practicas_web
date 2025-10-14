@@ -1,0 +1,8 @@
+.main-cont {
+  width: 100%;
+  display: grid;
+  padding: 5%;
+  padding-left: 15%;
+  grid-template-columns: 60% 40%;
+  background: #bda2e0;
+}

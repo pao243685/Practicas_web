@@ -1,16 +1,7 @@
-<div class="media-control-layer">
-
-     <div class="audio">
-                <audio controls id="media" hidden>
-                    <source id="audio" [src]="song?.song" type="audio/mpeg">
-                </audio>
-                <input type="range" value="0" id="progress">
-            </div>
-
-            <div class="song-controls">
-                <span id="lastest"(click)= "lastSong()">last</span>
-                <span id="play" class="play" (click)="play()">play</span>
-                <span id="forward" (click)="nextSong()">forward</span>
-            </div>
-
+<audio controls></audio>
+<input type="range" id="control-bar">
+<div class="player-buttons">
+  <span class="back"><i class="fa-solid fa-backward-step"></i></span>
+  <span class="play"><i class="fa-solid fa-play"></i></span>
+  <span class="next"><i class="fa-solid fa-forward-step"></i></span>
 </div>

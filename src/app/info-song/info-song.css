@@ -1,0 +1,17 @@
+.card-song-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-song-img {
+  width: 600px;
+  height: 400px;
+}
+
+.card-song-title,
+.card-song-artist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

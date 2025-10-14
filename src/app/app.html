@@ -1,5 +1,9 @@
-<div id="content">
-  <app-info-song [song]="actualSong"></app-info-song>
-  <br>
-  <app-media-control (requestSong)= "changeSong($event)" (isPlaying)="togglePlay($event)"></app-media-control>
+<div id="main">
+  <app-info-song *ngIf="currentSong" [song]="currentSong" displayMode="main"></app-info-song>
+  <app-playlist *ngIf="playlist.length > 0" [playlist]="playlist"></app-playlist>
+  <p>Current Song: {{ currentSong.name || 'No song yet' }}</p>
+<p>Playlist length: {{ playlist.length }}</p>
+
 </div>
+
+<app-media-control *ngIf="currentSong" [currentSong]="currentSong"></app-media-control>

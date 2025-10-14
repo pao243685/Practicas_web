@@ -5,23 +5,33 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { InfoSong } from './info-song/info-song';
 import { MediaControl } from './media-control/media-control';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
+import { Playlist } from './playlist/playlist';
+import { Player } from './player/player';
+import { authInterceptor } from './interceptors/auth-interceptor';
 
 @NgModule({
   declarations: [
     App,
     InfoSong,
-    MediaControl
+    MediaControl,
+    Playlist,
+    Player
 
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideHttpClient()
+    provideHttpClient(
+      withInterceptors([
+        authInterceptor
+      ])
+    )
   ],
   bootstrap: [App]
 })

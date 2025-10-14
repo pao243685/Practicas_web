@@ -1,7 +1,5 @@
-<div id="main-media">
- <div id="song-details">
-    <img [src]="song.url" alt="" id="song-img">
-    <h1 id="title">{{song.name}}</h1>
-    <h3 id="artist">{{song.artist}}</h3>
- </div>
+<img src="{{ song.url_cover }}" alt="" class="card-song-img">
+<div class="card-song-details">
+  <h1 class="card-song-title">{{ song.name }}</h1>
+  <h3 class="card-song-artist">{{ song.artist }}</h3>
 </div>

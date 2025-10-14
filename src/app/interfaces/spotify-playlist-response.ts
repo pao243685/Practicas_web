@@ -9,9 +9,8 @@ export interface SpotifyPlaylistResponse {
     href: string,
     images: SpotifyImageResponse[],
     tracks: {
-        items: [
-            track: SpotifyTrackResponse
-
-        ]
-    }
+        items: {
+            track: SpotifyTrackResponse;
+        }[];
+    };
 }

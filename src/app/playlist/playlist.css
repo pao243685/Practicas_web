@@ -1,0 +1,15 @@
+.lista {
+  max-height: 500px;
+  overflow: auto;
+}
+
+.cancion-lista {
+  display: flex;
+  gap: 25px;
+  padding: 10px;
+}
+
+.cancion-lista img {
+  width: 70px;
+  height: 65px;
+}
