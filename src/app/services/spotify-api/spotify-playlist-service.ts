@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SpotifyPlaylistService {
+  private _cookieStorageService: any;
   
   constructor(
     private _http: HttpClient

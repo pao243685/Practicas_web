@@ -19,7 +19,7 @@ export function parseSpotifyPlaylist(playlistResponse: SpotifyPlaylistResponse):
       name: track.name,
       artist: artistNames,
       url_cover: playlistResponse.images[0]?.url || '',
-      url_media: track.preview_url || '' // preview de 30s
+      url_media: track.preview_url || '' 
     } as Song;
   });
 }

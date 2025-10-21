@@ -1,4 +1,8 @@
 <div id="main">
+  <nav>
+     <app-buscador></app-buscador>
+  </nav>
+ 
   <app-info-song *ngIf="currentSong" [song]="currentSong" displayMode="main"></app-info-song>
   <app-playlist *ngIf="playlist.length > 0" [playlist]="playlist"></app-playlist>
   <p>Current Song: {{ currentSong.name || 'No song yet' }}</p>
@@ -7,3 +11,6 @@
 </div>
 
 <app-media-control *ngIf="currentSong" [currentSong]="currentSong"></app-media-control>
+
+
+<router-outlet></router-outlet>

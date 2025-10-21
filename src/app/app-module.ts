@@ -9,6 +9,10 @@ import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/
 import { Playlist } from './playlist/playlist';
 import { Player } from './player/player';
 import { authInterceptor } from './interceptors/auth-interceptor';
+import { Buscador } from './buscador/buscador';
+import { ResultadosBusqueda } from './resultados-busqueda/resultados-busqueda';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,13 +20,17 @@ import { authInterceptor } from './interceptors/auth-interceptor';
     InfoSong,
     MediaControl,
     Playlist,
-    Player
+    Player,
+    Buscador,
+    ResultadosBusqueda
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    RouterLink
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),
