@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Song } from '../interfaces/song';
+import { MusicPlayerService } from '../services/music-player';
 
 @Component({
   selector: 'app-media-control',
@@ -9,4 +10,14 @@ import { Song } from '../interfaces/song';
 })
 export class MediaControl {
   @Input() currentSong!: Song;
+  
+  constructor(private musicPlayerService: MusicPlayerService) {}
+  
+  nextSong() {
+    this.musicPlayerService.nextSong();
+  }
+  
+  previousSong() {
+    this.musicPlayerService.previousSong();
+  }
 }

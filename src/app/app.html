@@ -1,16 +1,26 @@
-<div id="main">
+<div class="main-cont">
   <nav>
      <app-buscador></app-buscador>
   </nav>
+
+ <div class="info-playlist-container">
  
-  <app-info-song *ngIf="currentSong" [song]="currentSong" displayMode="main"></app-info-song>
-  <app-playlist *ngIf="playlist.length > 0" [playlist]="playlist"></app-playlist>
+  <div class="song-current">
+     <router-outlet></router-outlet>
+     <!--
+      <app-info-song *ngIf="currentSong" [song]="currentSong" displayMode="main"></app-info-song> --> 
+      <h1>controles</h1>
+      <app-media-control *ngIf="currentSong && currentSong.name" [currentSong]="currentSong"></app-media-control>
+  </div>
+
+<div class="playlist-container">
+  <h1>playlist</h1>
+     <app-playlist [playlist]="playlist"></app-playlist>
+</div>
+ </div>
   <p>Current Song: {{ currentSong.name || 'No song yet' }}</p>
 <p>Playlist length: {{ playlist.length }}</p>
 
+
 </div>
 
-<app-media-control *ngIf="currentSong" [currentSong]="currentSong"></app-media-control>
-
-
-<router-outlet></router-outlet>

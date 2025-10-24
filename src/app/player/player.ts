@@ -1,5 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Song } from '../interfaces/song';
+import { MusicPlayerService } from '../services/music-player';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-player',
@@ -8,6 +10,9 @@ import { Song } from '../interfaces/song';
   styleUrls: ['./player.css']
 })
 export class Player {
-  @Input() song!: Song;
-  @Input() playlist: Song[] = [];
+  song$: Observable<Song | null>;
+
+  constructor(private musicPlayerService: MusicPlayerService) {
+    this.song$ = this.musicPlayerService.currentSong$;
+  }
 }

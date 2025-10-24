@@ -1,8 +1,16 @@
 .main-cont {
   width: 100%;
-  display: grid;
+  display: flex;
   padding: 5%;
   padding-left: 15%;
-  grid-template-columns: 60% 40%;
+  flex-direction: column;
   background: #bda2e0;
+}
+.info-playlist-container {
+   width: 100%;
+    display: grid;
+    padding: 5%;
+    padding-left: 15%;
+    grid-template-columns: 60% 40%;
+    background: #bda2e0;
 }
