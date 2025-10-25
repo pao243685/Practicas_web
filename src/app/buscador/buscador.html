@@ -1,8 +1,19 @@
-<p>buscador works!</p>
-
-<label for="buscador">Buscador</label>
 
 
-<a routerLink="/resultados-busqueda">
-    <input type="text" [(ngModel)]="searchTerm" id="buscador" name="buscador" />
-</a>
+<div class="buscador-container">
+  
+  <div class="search-wrapper">
+    <input 
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      id="buscador" 
+      name="buscador"
+      placeholder="Buscar canciones..."
+      (keyup.enter)="onSearch()" />
+      
+        <button (click)="onSearch()">
+          Buscar
+        </button>
+     
+  </div>
+</div>

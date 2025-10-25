@@ -1,0 +1,43 @@
+.resultados-container {
+    margin: 10px;
+    background: #9c7bc2;
+}
+
+.resultados-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.resultado-item {
+    flex: 1 1 calc(33.333% - 10px);
+    cursor: pointer;
+}
+
+.no-results {
+    color: red;
+}
+
+.btn-back {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+    padding: 10px 20px;
+    background-color: #4e2d80;
+    color: white;
+    border-radius: 10px;
+    border: none;
+}
+
+.header-resultados {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.resultados-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

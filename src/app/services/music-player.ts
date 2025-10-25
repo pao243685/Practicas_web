@@ -38,7 +38,6 @@ export class MusicPlayerService {
     if (currentIndex < playlist.length - 1) {
       this.setCurrentIndex(currentIndex + 1);
     } else {
-      // Volver al inicio
       this.setCurrentIndex(0);
     }
   }
@@ -50,7 +49,6 @@ export class MusicPlayerService {
     if (currentIndex > 0) {
       this.setCurrentIndex(currentIndex - 1);
     } else {
-      // Ir al final
       this.setCurrentIndex(playlist.length - 1);
     }
   }

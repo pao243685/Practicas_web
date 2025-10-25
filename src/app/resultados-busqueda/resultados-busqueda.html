@@ -1,8 +1,21 @@
-<p>resultados-busqueda works!</p>
+<div class="resultados-container">
+    <div class="header-resultados">
+    <h1>Resultados para: "{{ searchQuery }}"</h1>
+    <button routerLink="/" class="btn-back">Cerrar</button>
+  </div>
+  
+  <div class="resultados-list" *ngIf="resultados.length > 0">
+    <div 
+      class="resultado-item" 
+      *ngFor="let resultado of resultados"
+      (click)="selectSong(resultado)">
+      <app-info-song [song]="resultado" displayMode="card"></app-info-song>
+    </div>
+  </div>
 
-
-
-<ul>
-  <li *ngFor="let resultado of resultados">
-    {{ resultado }}
-  </li>
+  <p *ngIf="resultados.length === 0" class="no-results">
+    No se encontraron resultados para "{{ searchQuery }}"
+  </p>
+  
+ 
+</div>

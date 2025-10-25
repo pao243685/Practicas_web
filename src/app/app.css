@@ -1,16 +1,31 @@
 .main-cont {
   width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 65% 35%;
+  background: linear-gradient(135deg, #b47ddb 0%, #4e2d80 100%);
+  color: #fff;
+  padding: 0% 0%;
+}
+
+.buscador-current-container{
+  padding: 20px;
+}
+
+.song-current {
+  margin-top: 3%;
   display: flex;
-  padding: 5%;
-  padding-left: 15%;
   flex-direction: column;
-  background: #bda2e0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
 }
-.info-playlist-container {
-   width: 100%;
-    display: grid;
-    padding: 5%;
-    padding-left: 15%;
-    grid-template-columns: 60% 40%;
-    background: #bda2e0;
+
+.playlist-container {
+  background: rgba(0, 0, 0, 0.18);
+  padding: 20px;
+  box-shadow: 0px 25px 25px rgba(21, 18, 98, 0.815);
+  
 }
+
